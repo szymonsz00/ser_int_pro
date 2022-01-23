@@ -33,7 +33,7 @@ class UserManager(BaseUserManager):
         if type == 'student':
             user = Student.objects.create(username=username, email=self.normalize_email(email))
         elif type == 'teacher':
-            user = Doctor.objects.create(username=username, email=self.normalize_email(email))
+            user = Teacher.objects.create(username=username, email=self.normalize_email(email))
 
         if user:
             user.set_password(password)
@@ -143,4 +143,4 @@ class Lesson(models.Model):
         ordering = ['date']
 
     def __str__(self):
-        return self.doctor, self.date
+        return self.teacher, self.date
