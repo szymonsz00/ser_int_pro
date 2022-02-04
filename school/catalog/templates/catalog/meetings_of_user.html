@@ -1,0 +1,19 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <h1>Meetings with teachers</h1>
+
+    {% if information_list %}
+    <ul>
+
+      {% for meeting in information_list %}
+      <li>
+        <a href="{% url 'teacher-detail' meeting.teacher.pk %}">{{meeting.teacher.full_name}}</a> ({{ meeting.to_date }})
+      </li>
+      {% endfor %}
+    </ul>
+
+    {% else %}
+      <p>There are no books borrowed.</p>
+    {% endif %}
+{% endblock %}
